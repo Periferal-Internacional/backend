@@ -4,8 +4,14 @@ class UsersController < ApplicationController
   # GET /users
   def index
     @users = User.all
-
-    render json: @users
+    @userArray = []
+    @users.each do |user|
+      user_hash = {}
+      user_hash["user"] = user
+      user_hash["plant"] = user.getPlant()
+      @userArray.push(user_hash)
+    end
+    render json: @userArray
   end
 
   # GET /users/1
