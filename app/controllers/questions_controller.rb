@@ -3,15 +3,15 @@ class QuestionsController < ApplicationController
 
   # GET /questions
   def index
+    resHash = {}
     type = params[:question_type]
-
     if type
       @questions = Question.where(question_type: type)
     else
       @questions = Question.all
     end
-
-    render json: @questions
+    resHash["questions"] = @questions
+    render json: resHash
   end
 
   # GET /questions/1
