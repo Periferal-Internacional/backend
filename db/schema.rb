@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_29_175350) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_05_164549) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -66,6 +66,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_29_175350) do
     t.integer "xp_ji", default: 0
     t.integer "xp_jr", default: 0
     t.integer "xp_jm", default: 0
+    t.string "business", default: ""
+    t.string "general_area", default: ""
+    t.string "superior_department", default: ""
+    t.string "department", default: ""
+    t.integer "arca_id", default: 0
+    t.string "email", default: ""
     t.index ["plant_id"], name: "index_users_on_plant_id"
   end
 
