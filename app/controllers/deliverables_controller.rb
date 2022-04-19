@@ -3,8 +3,12 @@ class DeliverablesController < ApplicationController
 
   # GET /deliverables
   def index
-    @deliverables = Deliverable.all
-
+    type = params[:deliverable_type]
+    if type
+      @deliverables = Deliverable.where(deliverable_type: type)
+    else
+      @deliverables = Deliverable.all
+    end
     render json: @deliverables
   end
 
