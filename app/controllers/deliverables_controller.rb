@@ -4,8 +4,13 @@ class DeliverablesController < ApplicationController
   # GET /deliverables
   def index
     type = params[:deliverable_type]
-    if type
+    id = params[:user_id]
+    if type && id
+      @deliverables = Deliverable.where(deliverable_type: type, user_id: id)
+    elsif type
       @deliverables = Deliverable.where(deliverable_type: type)
+    elsif id
+      @deliverables = Deliverable.where(user_id: id)
     else
       @deliverables = Deliverable.all
     end
