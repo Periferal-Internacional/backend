@@ -1,4 +1,5 @@
 class PlantsController < ApplicationController
+  before_action :authorize_request, except: :create
   before_action :set_plant, only: %i[ show update destroy ]
 
   # GET /plants

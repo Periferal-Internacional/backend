@@ -1,4 +1,5 @@
 class DocumentationsController < ApplicationController
+  before_action :authorize_request
   before_action :set_documentation, only: %i[ show update destroy ]
 
   # GET /documentations
