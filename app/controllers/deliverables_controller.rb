@@ -1,5 +1,5 @@
 class DeliverablesController < ApplicationController
-  before_action :authorize_request
+  before_action :authorize_request, except: :upload
   before_action :set_deliverable, only: %i[ show update destroy ]
 
   # GET /deliverables
@@ -46,6 +46,10 @@ class DeliverablesController < ApplicationController
   # DELETE /deliverables/1
   def destroy
     @deliverable.destroy
+  end
+
+  def upload
+    head :ok
   end
 
   private
