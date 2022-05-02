@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
-  wrap_parameters :user, include: [:username, :password, :password_confirmation, :name, :lastName1, :lastName2, :position, :admin, :super_user, :plant_id, :xp_ji, :xp_jr, :xp_jm, :business, :general_area, :superior_department, :department, :arca_id, :email, :cap_operators]
+  wrap_parameters :user, include: [:username, :password, :password_confirmation, :name, :lastName1, :lastName2, :position, 
+                                   :admin, :super_user, :plant_id, :xp_ji, :xp_jr, :xp_jm, :business, :general_area, :superior_department, 
+                                   :department, :arca_id, :email, :cap_operators, :total_operators, :mdp_b4, :mdp_aft, :waste_b4, 
+                                   :waste_aft, :format_b4, :format_aft]
+
   before_action :authorize_request, except: :create
   before_action :set_user, only: %i[ show update destroy ]
 
@@ -54,6 +58,9 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:username, :password, :password_confirmation, :name, :lastName1, :lastName2, :position, :admin, :super_user, :plant_id, :xp_ji, :xp_jr, :xp_jm, :business, :general_area, :superior_department, :department, :arca_id, :email, :cap_operators)
+      params.require(:user).permit(:username, :password, :password_confirmation, :name, :lastName1, :lastName2, :position, 
+                                   :admin, :super_user, :plant_id, :xp_ji, :xp_jr, :xp_jm, :business, :general_area, :superior_department, \
+                                   :department, :arca_id, :email, :cap_operators, :total_operators, :mdp_b4, :mdp_aft, :waste_b4, 
+                                   :waste_aft, :format_b4, :format_aft)
     end
 end
