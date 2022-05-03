@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_02_204231) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_03_154603) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -83,6 +83,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_02_204231) do
     t.integer "waste_aft", default: 0
     t.integer "format_b4", default: 0
     t.integer "format_aft", default: 0
+    t.integer "improvements", default: 1
     t.index ["plant_id"], name: "index_users_on_plant_id"
   end
 
