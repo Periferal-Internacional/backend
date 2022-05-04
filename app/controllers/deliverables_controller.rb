@@ -25,13 +25,10 @@ class DeliverablesController < ApplicationController
 
   # POST /deliverables
   def create
-    # @deliverable = Deliverable.new(deliverable_params)
-    @deliverable = Deliverable.create(deliverable_params())
-    # if @deliverable.save
-    if @deliverable.valid?()
-      deliverable_serializer = DeliverableSerializer.new(deliverable: @deliverable)
-      # render json: @deliverable, status: :created, location: @deliverable
-      render json: deliverable_serializer.serialize_new_deliverable()
+    @deliverable = Deliverable.new(deliverable_params)
+
+    if @deliverable.save
+      render json: @deliverable, status: :created, location: @deliverable
     else
       render json: @deliverable.errors, status: :unprocessable_entity
     end
@@ -63,6 +60,6 @@ class DeliverablesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def deliverable_params
-      params.permit(:user_id, :name, :approved, :comment, :deliverable_type, :grade, :file)
+      params.require(:deliverable).permit(:user_id, :name, :approved, :comment, :deliverable_type, :grade)
     end
 end
