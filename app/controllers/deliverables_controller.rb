@@ -25,12 +25,9 @@ class DeliverablesController < ApplicationController
 
   # POST /deliverables
   def create
-    # @deliverable = Deliverable.new(deliverable_params)
     @deliverable = Deliverable.create(deliverable_params())
-    # if @deliverable.save
     if @deliverable.valid?()
       deliverable_serializer = DeliverableSerializer.new(deliverable: @deliverable)
-      # render json: @deliverable, status: :created, location: @deliverable
       render json: deliverable_serializer.serialize_new_deliverable()
     else
       render json: @deliverable.errors, status: :unprocessable_entity
