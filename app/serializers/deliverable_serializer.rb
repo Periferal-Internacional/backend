@@ -9,7 +9,7 @@ class DeliverableSerializer
         serialized_new_deliverable.to_json()
     end
       
-      private def serialize_deliverable(deliverable)
+    def serialize_deliverable(deliverable)
         {
           deliverable: {
             id: deliverable.id,
@@ -24,7 +24,7 @@ class DeliverableSerializer
             updated_at: deliverable.updated_at,
           }
         }
-      end
+    end
       
       
     end

@@ -15,12 +15,19 @@ class DeliverablesController < ApplicationController
     else
       @deliverables = Deliverable.all
     end
-    render json: @deliverables
+    serializedDeliverables = [];
+    @deliverables.each do |deliverable|
+      deliverable_serializer = DeliverableSerializer.new(deliverable: deliverable)
+      serializedDeliverables << deliverable_serializer.serialize_deliverable(deliverable)
+    end
+
+    render json: serializedDeliverables
   end
 
   # GET /deliverables/1
   def show
-    render json: @deliverable
+    deliverable_serializer = DeliverableSerializer.new(deliverable: @deliverable)
+    render json: deliverable_serializer.serialize_deliverable(@deliverable)
   end
 
   # POST /deliverables
@@ -37,7 +44,8 @@ class DeliverablesController < ApplicationController
   # PATCH/PUT /deliverables/1
   def update
     if @deliverable.update(deliverable_params)
-      render json: @deliverable
+      deliverable_serializer = DeliverableSerializer.new(deliverable: @deliverable)
+      render json: deliverable_serializer.serialize_deliverable(@deliverable)
     else
       render json: @deliverable.errors, status: :unprocessable_entity
     end
