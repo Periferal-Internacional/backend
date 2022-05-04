@@ -60,6 +60,6 @@ class DeliverablesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def deliverable_params
-      params.permit(:user_id, :name, :approved, :comment, :deliverable_type, :grade, :file)
+      params.require(:deliverable).permit(:user_id, :name, :approved, :comment, :deliverable_type, :grade)
     end
 end
