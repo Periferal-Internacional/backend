@@ -5,7 +5,7 @@ ruby "3.0.0"
 
 gem 'rack-cors'
 gem 'aws-sdk', '~> 3'
-gem 'aws-sdk-s3', '~> 1', require: false
+# gem 'aws-sdk-s3', '~> 1', require: false
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.2", ">= 7.0.2.2"
 
