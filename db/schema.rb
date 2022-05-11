@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_06_142742) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_11_125621) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -106,13 +106,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_06_142742) do
     t.integer "arca_id", default: 0
     t.string "email", default: ""
     t.integer "cap_operators", default: 0
-    t.integer "total_operators", default: 0
-    t.integer "mdp_b4", default: 0
-    t.integer "mdp_aft", default: 0
-    t.integer "waste_b4", default: 0
-    t.integer "waste_aft", default: 0
-    t.integer "format_b4", default: 0
-    t.integer "format_aft", default: 0
+    t.integer "total_operators", default: 1
+    t.integer "mdp_b4", default: 1
+    t.integer "mdp_aft", default: 1
+    t.integer "waste_b4", default: 1
+    t.integer "waste_aft", default: 1
+    t.integer "format_b4", default: 1
+    t.integer "format_aft", default: 1
     t.integer "improvements", default: 1
     t.index ["plant_id"], name: "index_users_on_plant_id"
   end
